@@ -12,6 +12,11 @@ public class WallRunning : MonoBehaviour
     [SerializeField]
     private float wallRunForce;
     [SerializeField]
+    private float wallJumpSideForce;
+    [SerializeField]
+    private float wallJumpForce;
+
+    [SerializeField]
     private float wallClimbSpeed;
     [SerializeField]
     private float maxWallRunTime;
@@ -20,6 +25,7 @@ public class WallRunning : MonoBehaviour
     [Header("Input")]
     private float horizontalInput;
     private float verticalInput;
+    public KeyCode jumpKey = KeyCode.Space;
 
     private bool upwardsRunning;
     private bool downwardsRunning;
@@ -33,6 +39,13 @@ public class WallRunning : MonoBehaviour
     private RaycastHit rightWallHit;
     private bool wallLeft;
     private bool wallRight;
+
+    [Header("Exiting")]
+    private bool exitingWall;
+    [SerializeField]
+    private float exitWallTime;
+    [SerializeField]
+    private float exitWallTimer;
 
     [Header("References")]
     [SerializeField]
@@ -82,11 +95,32 @@ public class WallRunning : MonoBehaviour
         upwardsRunning = (pitch < -10);   // Adjust threshold as necessary
         downwardsRunning = (pitch > 10);  // Adjust threshold as necessary
 
-        if ((wallLeft || wallRight) && AboveGround())
+        if ((wallLeft || wallRight) && AboveGround() && !exitingWall)
         {
             if (!pm.wallrunning)
             {
                 StartWallRun();
+            }
+
+            if(Input.GetKeyDown(jumpKey))
+            {
+                WallJump();
+            }
+        }
+
+        else if(exitingWall)
+        {
+            if(pm.wallrunning)
+            {
+                StopWallRun();
+            }
+            if(exitWallTimer > 0)
+            {
+                exitWallTimer -= Time.deltaTime;
+            }
+            if(exitWallTimer <= 0)
+            {
+                exitingWall = false;
             }
         }
         else
@@ -140,4 +174,16 @@ public class WallRunning : MonoBehaviour
         pm.wallrunning = false;
     }
 
+    private void WallJump()
+    {
+        exitingWall = true;
+        exitWallTimer = exitWallTime;
+
+        Vector3 wallNormal = wallRight ? rightWallHit.normal : leftWallHit.normal;
+
+        Vector3 forceToApply = transform.up * wallJumpForce + wallNormal * wallJumpSideForce;
+
+        rb.velocity = new Vector3(rb.velocity.x, 0.0f, rb.velocity.z);
+        rb.AddForce(forceToApply, ForceMode.Impulse);
+    }
 }
