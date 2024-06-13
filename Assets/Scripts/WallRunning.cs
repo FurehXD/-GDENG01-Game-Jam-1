@@ -50,6 +50,8 @@ public class WallRunning : MonoBehaviour
     [Header("References")]
     [SerializeField]
     private Transform orientation;
+    [SerializeField]
+    private PlayerLook cam;
     [SerializeField] 
     private Camera playerCamera;
     private PlayerMovement pm;
@@ -135,6 +137,16 @@ public class WallRunning : MonoBehaviour
     private void StartWallRun()
     {
         pm.wallrunning = true;
+
+        cam.DoFov(90.0f);
+        if(wallLeft)
+        {
+            cam.DoTilt(-5.0f);
+        }
+        if (wallRight)
+        {
+            cam.DoTilt(5.0f);
+        }
     }
 
     private void WallRunningMovement()
@@ -172,6 +184,9 @@ public class WallRunning : MonoBehaviour
     private void StopWallRun()
     {
         pm.wallrunning = false;
+
+        cam.DoFov(80.0f);
+        cam.DoTilt(0.0f);
     }
 
     private void WallJump()
