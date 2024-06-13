@@ -60,6 +60,14 @@ public class PlayerMovement : MonoBehaviour
     private float verticalInput;
     private Vector3 moveDirection;
 
+    [Header("Camera")]
+    [SerializeField]
+    private Camera playerCamera;  // Reference to the player's camera
+    [SerializeField]
+    private PlayerLook cam;
+    private float normalFov = 80.0f;  // Normal FOV
+    private float sprintFov = 90.0f;  // Increased FOV when sprinting
+
     Rigidbody rb;
 
     [SerializeField]
@@ -91,15 +99,19 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.sprinting;
             moveSpeed = sprintSpeed;
+            cam.DoFov(sprintFov);
+
         }
         else if(isGrounded)
         {
             state = MovementState.walking;
             moveSpeed = walkSpeed;
+            cam.DoFov(normalFov);
         }
         else
         {
             state = MovementState.air;
+            
         }
     }
 

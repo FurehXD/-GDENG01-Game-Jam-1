@@ -998,6 +998,8 @@ MonoBehaviour:
   isGrounded: 0
   maxSlopeAngle: 40
   orientation: {fileID: 1944338305}
+  playerCamera: {fileID: 963194227}
+  cam: {fileID: 963194229}
   state: 0
   wallrunning: 0
 --- !u!114 &1323129970
