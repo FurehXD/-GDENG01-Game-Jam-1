@@ -14,6 +14,12 @@ public class EventNames {
 		public const string ON_QUIT_GAME = "ON_QUIT_GAME";
         public const string ON_BACK = "ON_BACK";
     }
+	public class GameEvents
+	{
+        public const string ON_TRY_AGAIN = "ON_TRY_AGAIN";
+        public const string ON_MAIN_MENU = "ON_MAIN_MENU";
+        public const string ON_WIN = "ON_WIN";
+    }
 
 	public class SettingsEvents
 	{
