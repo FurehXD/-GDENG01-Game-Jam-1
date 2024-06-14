@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro; 
+using TMPro;
 
 public class DataSlotChecker : MonoBehaviour
 {
@@ -10,9 +10,9 @@ public class DataSlotChecker : MonoBehaviour
     [SerializeField]
     private GameObject DataSlotArea;
     [SerializeField]
-    private TextMeshProUGUI amountText; 
+    private TextMeshProUGUI amountText;
 
-    private Collider dataSlotAreaCollider; 
+    private Collider dataSlotAreaCollider;
 
     void Start()
     {
@@ -25,8 +25,9 @@ public class DataSlotChecker : MonoBehaviour
 
     void Update()
     {
-        int componentsOutside = 0; 
+        int componentsOutside = 0;
 
+        // Check each child component
         foreach (Transform child in DataComponentParent.transform)
         {
             Collider componentCollider = child.GetComponent<Collider>();
@@ -38,10 +39,11 @@ public class DataSlotChecker : MonoBehaviour
 
             if (!dataSlotAreaCollider.bounds.Intersects(componentCollider.bounds))
             {
-                componentsOutside++; 
+                componentsOutside++;
             }
         }
 
+        // Update the amount text with the number of components outside
         if (amountText != null)
         {
             amountText.text = componentsOutside.ToString();
@@ -49,6 +51,12 @@ public class DataSlotChecker : MonoBehaviour
         else
         {
             Debug.LogError("Status TextMeshProUGUI component not assigned!");
+        }
+
+        // Check if no components are outside, and log "You Win"
+        if (componentsOutside == 0)
+        {
+            Debug.Log("You Win");
         }
     }
 }
