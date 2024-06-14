@@ -33,7 +33,7 @@ public class MainMenu : MonoBehaviour
 
     private void playSFX_button()
     {
-        SoundFXManager.Instance.PlaySoundFXClip(buttonSoundClip, transform, 1f); 
+        SoundFXManager.Instance.PlaySFXClip(buttonSoundClip, transform, 1f); 
     }
 
     public void OnPlayGame()

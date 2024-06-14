@@ -13995,6 +13995,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 93496850}
     - target: {fileID: 4083757798647314032, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
+      propertyPath: SFX_jump
+      value: 
+      objectReference: {fileID: 8300000, guid: 3d7d35240f173d04db7a1106ebddc465, type: 3}
+    - target: {fileID: 4083757798647314032, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 93496848}
@@ -14013,11 +14017,55 @@ PrefabInstance:
     - target: {fileID: 6613021728535516161, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
       propertyPath: cam
       value: 
+<<<<<<< HEAD
       objectReference: {fileID: 93496850}
+=======
+      objectReference: {fileID: 861925899}
+    - target: {fileID: 6613021728535516161, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
+      propertyPath: SFX_jump
+      value: 
+      objectReference: {fileID: 8300000, guid: 3d7d35240f173d04db7a1106ebddc465, type: 3}
+    - target: {fileID: 6613021728535516161, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
+      propertyPath: jumpForce
+      value: 10
+      objectReference: {fileID: 0}
+>>>>>>> Max-Dev
+    - target: {fileID: 6613021728535516161, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
+      propertyPath: SFX_airGlide
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6613021728535516161, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
       propertyPath: playerCamera
       value: 
+<<<<<<< HEAD
       objectReference: {fileID: 93496848}
+=======
+      objectReference: {fileID: 861925901}
+    - target: {fileID: 6613021728535516161, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
+      propertyPath: footsteps.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613021728535516161, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
+      propertyPath: 'footsteps.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 4eb77c041acc6cd4e8495856b795a35b, type: 3}
+    - target: {fileID: 6613021728535516161, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
+      propertyPath: 'footsteps.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 049bfd5c40b714446a7ac173ca8778d5, type: 3}
+    - target: {fileID: 6613021728535516161, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
+      propertyPath: SFX_footsteps.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6613021728535516161, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
+      propertyPath: 'SFX_footsteps.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 4eb77c041acc6cd4e8495856b795a35b, type: 3}
+    - target: {fileID: 6613021728535516161, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
+      propertyPath: 'SFX_footsteps.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 049bfd5c40b714446a7ac173ca8778d5, type: 3}
+>>>>>>> Max-Dev
     - target: {fileID: 7125836272847988490, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -14728,6 +14776,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189996224}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1190756064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1190756066}
+  - component: {fileID: 1190756065}
+  m_Layer: 0
+  m_Name: SoundFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1190756065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190756064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ca8195dcdd9144d80ca8d179313f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SFXObject: {fileID: 887299588780415564, guid: c814feacd7928684c92bc0214cf111de, type: 3}
+--- !u!4 &1190756066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190756064}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.863106, y: -134.0875, z: -45.165245}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1197520427
 GameObject:
   m_ObjectHideFlags: 0
@@ -26286,5 +26379,9 @@ SceneRoots:
   - {fileID: 270814295}
   - {fileID: 680932177}
   - {fileID: 1627199920}
+<<<<<<< HEAD
   - {fileID: 9672862}
   - {fileID: 740604387}
+=======
+  - {fileID: 1190756066}
+>>>>>>> Max-Dev

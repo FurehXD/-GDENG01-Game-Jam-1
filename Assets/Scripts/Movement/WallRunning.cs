@@ -57,6 +57,9 @@ public class WallRunning : MonoBehaviour
     private PlayerMovement pm;
     private Rigidbody rb;
 
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip SFX_jump;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -200,5 +203,12 @@ public class WallRunning : MonoBehaviour
 
         rb.velocity = new Vector3(rb.velocity.x, 0.0f, rb.velocity.z);
         rb.AddForce(forceToApply, ForceMode.Impulse);
+
+        PlaySFX_jump();
+    }
+
+    private void PlaySFX_jump()
+    {
+        SoundFXManager.Instance.PlaySFXClip(SFX_jump, transform, 1f);
     }
 }
