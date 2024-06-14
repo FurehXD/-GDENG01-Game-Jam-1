@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed;
     [SerializeField]
     private float wallrunSpeed;
+    public bool enableMovement = true;
 
 
     [SerializeField]
@@ -126,12 +127,14 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        if (!enableMovement) return;
+
         isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
         MyInput();
         SpeedControl();
         StateHandler();
 
-        if(isGrounded)
+        if (isGrounded)
         {
             rb.drag = groundDrag;
         }
@@ -143,6 +146,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!enableMovement) return;
+
         MovePlayer();
     }
     private void MyInput()
