@@ -14017,9 +14017,7 @@ PrefabInstance:
     - target: {fileID: 6613021728535516161, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
       propertyPath: cam
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 93496850}
-=======
       objectReference: {fileID: 861925899}
     - target: {fileID: 6613021728535516161, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
       propertyPath: SFX_jump
@@ -14029,7 +14027,6 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 10
       objectReference: {fileID: 0}
->>>>>>> Max-Dev
     - target: {fileID: 6613021728535516161, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
       propertyPath: SFX_airGlide
       value: 
@@ -14037,9 +14034,7 @@ PrefabInstance:
     - target: {fileID: 6613021728535516161, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
       propertyPath: playerCamera
       value: 
-<<<<<<< HEAD
       objectReference: {fileID: 93496848}
-=======
       objectReference: {fileID: 861925901}
     - target: {fileID: 6613021728535516161, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
       propertyPath: footsteps.Array.size
@@ -14065,7 +14060,6 @@ PrefabInstance:
       propertyPath: 'SFX_footsteps.Array.data[1]'
       value: 
       objectReference: {fileID: 8300000, guid: 049bfd5c40b714446a7ac173ca8778d5, type: 3}
->>>>>>> Max-Dev
     - target: {fileID: 7125836272847988490, guid: 0513148d935b0f14a98bf408605aa2c9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -26379,9 +26373,6 @@ SceneRoots:
   - {fileID: 270814295}
   - {fileID: 680932177}
   - {fileID: 1627199920}
-<<<<<<< HEAD
   - {fileID: 9672862}
   - {fileID: 740604387}
-=======
   - {fileID: 1190756066}
->>>>>>> Max-Dev
