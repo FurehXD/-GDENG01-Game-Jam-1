@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -84,6 +85,12 @@ public class PlayerMovement : MonoBehaviour
 
     public bool wallrunning;
 
+    [Header("Sound Effects")]
+    [SerializeField] private AudioClip[] SFX_footsteps;
+    [SerializeField] private AudioClip SFX_jump;
+
+    private float timer = 0.0f;
+
     private void StateHandler()
     {
         if (wallrunning)
@@ -154,6 +161,7 @@ public class PlayerMovement : MonoBehaviour
     {
         this.horizontalInput = Input.GetAxisRaw("Horizontal");
         this.verticalInput = Input.GetAxisRaw("Vertical");
+        Debug.Log(this.horizontalInput);
         if(Input.GetKey(jumpKey) && isJumpReady && isGrounded)
         {
             isJumpReady = false;
@@ -181,7 +189,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20.0f, ForceMode.Force);
 
-            if(rb.velocity.y > 0)
+            if (rb.velocity.y > 0)
             {
                 rb.AddForce(Vector3.down * 80.0f, ForceMode.Force);
             }
@@ -190,14 +198,19 @@ public class PlayerMovement : MonoBehaviour
         if(isGrounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10.0f, ForceMode.Force);
+            PlaySFX_footsteps();
+
         }
         else if(!isGrounded)
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10.0f * airMultiplier, ForceMode.Force);
+           // PlaySFX_airGlide();
         }
 
-        rb.useGravity = !OnSlope();
         
+        rb.useGravity = !OnSlope();
+
+       
     }
     
     private void SpeedControl()
@@ -232,7 +245,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0.0f, rb.velocity.z);
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
 
-
+        PlaySFX_jump();
     }
 
     private void ResetJump()
@@ -256,5 +269,38 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 GetSlopeMoveDirection()
     {
         return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized;
+    }
+
+
+
+    private void PlaySFX_footsteps()
+    {
+        float waitTime = 0.0f;
+
+        if (state == MovementState.sprinting)
+        {
+            waitTime = 0.3f;
+        }
+
+        else
+        {
+            waitTime = 0.5f;
+        }
+
+            timer += Time.deltaTime;
+
+        if(this.horizontalInput != 0 || this.verticalInput!= 0)
+        {
+            if (timer > waitTime)
+            {
+                SoundFXManager.Instance.PlayRandomSFXClip(SFX_footsteps, transform, 1f);
+                timer = 0;
+            }
+        }
+    }
+
+    private void PlaySFX_jump()
+    {
+        SoundFXManager.Instance.PlaySFXClip(SFX_jump, transform, 1f);
     }
 }
