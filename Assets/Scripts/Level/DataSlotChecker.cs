@@ -11,11 +11,14 @@ public class DataSlotChecker : MonoBehaviour
     private GameObject DataSlotArea;
     [SerializeField]
     private TextMeshProUGUI amountText;
+    [SerializeField]
+    private GameObject winObject;
 
     private Collider dataSlotAreaCollider;
 
     void Start()
     {
+        winObject.SetActive(false);
         dataSlotAreaCollider = DataSlotArea.GetComponent<Collider>();
         if (dataSlotAreaCollider == null)
         {
@@ -56,7 +59,10 @@ public class DataSlotChecker : MonoBehaviour
         // Check if no components are outside, and log "You Win"
         if (componentsOutside == 0)
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             Debug.Log("You Win");
+            winObject.SetActive(true);
         }
     }
 }
