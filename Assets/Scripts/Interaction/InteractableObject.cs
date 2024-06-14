@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour, IInteractable
 {
-    private Transform carryPosition;
+    private Transform orientationTransform;
     private bool isBeingCarried = false;
 
+    // Constructor to initialize with the player's orientation transform
     public void Interact(Transform carryPosition)
     {
-        this.carryPosition = carryPosition; // Store the carry position
-        isBeingCarried = true;              // Mark the object as being carried
+        this.orientationTransform = carryPosition; // Store the orientation transform
+        isBeingCarried = true;                     // Mark the object as being carried
         this.GetComponent<Rigidbody>().isKinematic = true;
     }
 
@@ -22,7 +23,9 @@ public class InteractableObject : MonoBehaviour, IInteractable
     {
         if (isBeingCarried)
         {
-            this.transform.position = carryPosition.position; // Continuously update position
+            // Update position to be in front of the orientation transform
+            this.transform.position = orientationTransform.position + orientationTransform.forward * 3.0f; // Adjust the distance
+            this.transform.rotation = Quaternion.LookRotation(orientationTransform.forward); // Optionally, align rotation
         }
     }
 }
