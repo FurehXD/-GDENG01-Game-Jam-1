@@ -10,9 +10,10 @@ public class EventNames {
 	public class MainMenuEvents
 	{
 		public const string ON_PLAY_GAME = "ON_PLAY_GAME";
-		public const string ON_HELP = "ON_HELP";
+		public const string ON_SETTINGS = "ON_SETTINGS";
 		public const string ON_QUIT_GAME = "ON_QUIT_GAME";
-	}
+        public const string ON_BACK = "ON_BACK";
+    }
 
 	/*public const string ON_UPDATE_SCORE = "ON_UPDATE_SCORE";
 	public const string ON_CORRECT_MATCH = "ON_CORRECT_MATCH";
