@@ -20,6 +20,18 @@ public class EventNames {
         public const string ON_MAIN_MENU = "ON_MAIN_MENU";
         public const string ON_WIN = "ON_WIN";
     }
+
+	public class SettingsEvents
+	{
+        public const string ON_RESUME = "ON_BACK";
+        public const string ON_CONTROLS = "ON_CONTROLS";
+        public const string ON_AUDIO = "ON_AUDIO";
+        public const string ON_EXIT = "ON_EXIT";
+        public const string ON_BACK = "ON_BACK";
+    }
+
+
+	
 }
 
 
